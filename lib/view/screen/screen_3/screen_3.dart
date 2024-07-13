@@ -15,8 +15,6 @@ class Screen3 extends StatefulWidget {
 }
 
 class _Screen3State extends State<Screen3> {
-  String details = '0';
-  String category = '0';
   TextEditingController nameCtr = TextEditingController();
   TextEditingController subCtr = TextEditingController();
   TextEditingController dateCtr = TextEditingController();
@@ -37,15 +35,18 @@ class _Screen3State extends State<Screen3> {
         toolbarHeight: 80,
         elevation: 0,
         backgroundColor: const Color(0xffFFFFFF),
-        // backgroundColor: Colors.amber,
         leading: Padding(
           padding: const EdgeInsets.only(left: 25),
           child: GestureDetector(
-              onTap: ()=> {Navigator.pop(context)},
-              child: Image.asset(Images.arrow_back, height: 24,)),
+              onTap: () => Navigator.pop(context),
+              child: Image.asset(Images.arrow_back, height: 24)),
         ),
         centerTitle: true,
-        title: const Text('নতুন যোগ করুন', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),),
+        title: const Text(
+          'নতুন যোগ করুন',
+          style: TextStyle(
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -61,8 +62,7 @@ class _Screen3State extends State<Screen3> {
                   title: "অনুচ্ছেদ",
                   hintText: "অনুচ্ছেদ লিখুন",
                   wardCount: '৪৫ শব্দ',
-                  hintTextColor: Colors.black54
-              ),
+                  hintTextColor: Colors.black54),
               sizeBoxH(25),
               CustomTextField(
                   height: 45,
@@ -73,8 +73,7 @@ class _Screen3State extends State<Screen3> {
                   hintText: "অনুচ্ছেদের বিভাগ নির্বাচন করুন",
                   suffixIcon: Images.arrow,
                   wardCount: "",
-                  hintTextColor: Colors.black54
-              ),
+                  hintTextColor: Colors.black54),
               sizeBoxH(25),
               CustomTextField(
                   height: 45,
@@ -86,8 +85,7 @@ class _Screen3State extends State<Screen3> {
                   suffixIcon: Images.arrow,
                   prefixIcon: Images.date,
                   wardCount: "",
-                  hintTextColor: Colors.black54
-              ),
+                  hintTextColor: Colors.black54),
               sizeBoxH(25),
               CustomTextField(
                   height: 45,
@@ -99,8 +97,7 @@ class _Screen3State extends State<Screen3> {
                   suffixIcon: Images.arrow,
                   prefixIcon: Images.location,
                   wardCount: "",
-                  hintTextColor: Colors.black54
-              ),
+                  hintTextColor: Colors.black54),
               sizeBoxH(25),
               CustomTextField(
                   height: 195,
@@ -112,60 +109,62 @@ class _Screen3State extends State<Screen3> {
                   title: "অনুচ্ছেদের বিবরণ",
                   hintText: "কার্যক্রমের বিবরণ লিখুন",
                   wardCount: '১২০ শব্দ',
-                  hintTextColor: Colors.black54
-              ),
+                  hintTextColor: Colors.black54),
               sizeBoxH(10),
             ],
           ),
         ),
       ),
-      bottomSheet:  Padding(
+      bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 40),
         child: SizedBox(
-          // color: ColorRes.red,
           height: 60,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35,),
+            padding: const EdgeInsets.symmetric(horizontal: 35),
             child: GlobalButtonWidget(
                 buttomColor: const Color(0xff336F4A),
                 str: 'সংরক্ষন করুন',
                 height: 45,
                 radius: 12,
-                onTap: () async{
-                  if(nameCtr.text.isNotEmpty){
-                    if(subCtr.text.isNotEmpty){
-                      if(dateCtr.text.isNotEmpty){
-                        if(locationCtr.text.isNotEmpty){
-                          if(descriptionCtr.text.isNotEmpty){
+                onTap: () async {
+                  if (nameCtr.text.isNotEmpty) {
+                    if (subCtr.text.isNotEmpty) {
+                      if (dateCtr.text.isNotEmpty) {
+                        if (locationCtr.text.isNotEmpty) {
+                          if (descriptionCtr.text.isNotEmpty) {
                             Get.dialog(CustomAlertDialogForPermission(
                               title: 'নতুন অনুচ্ছেদ সংরক্ষন',
                               description: 'আপনার সময়রেখাতে নতুন অনুচ্ছেদ সংরক্ষণ সম্পুর্ন হয়েছে',
                               buttonTap: () {
-                                // Navigator.pop(context);
-                                Get.offAll(const Screen3());
+                                Navigator.pop(context);
+                                nameCtr.clear();
+                                subCtr.clear();
+                                dateCtr.clear();
+                                locationCtr.clear();
+                                descriptionCtr.clear();
                               },
                               buttonText: "আরও যোগ করুন",
                             ));
-                          } else{
+                          } else {
                             showCustomSnackBar("কার্যক্রমের বিবরণ লিখুন");
                           }
-                        } else{
+                        } else {
                           showCustomSnackBar("স্থান নির্বাচন করুন");
                         }
-                      } else{
+                      } else {
                         showCustomSnackBar("তারিখ ও সময় নির্বাচন করুন");
                       }
-                    } else{
+                    } else {
                       showCustomSnackBar("অনুচ্ছেদের বিভাগ নির্বাচন করুন");
                     }
-                  } else{
+                  } else {
                     showCustomSnackBar("অনুচ্ছেদ লিখুন");
                   }
-                }
-            ),
+                }),
           ),
         ),
       ),
     );
   }
 }
+

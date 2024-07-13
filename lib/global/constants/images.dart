@@ -23,6 +23,8 @@ class Images {
   static const String time = 'assets/icons/time.png';
   static const String calendarBlack = 'assets/icons/calendar_black.png';
   static const String homeWhite = 'assets/icons/home_white.png';
+  static const String clock2 = 'assets/icons/clock2.png';
+  static const String locationWhite = 'assets/icons/locationWhite.png';
 
 
   /// Grid images

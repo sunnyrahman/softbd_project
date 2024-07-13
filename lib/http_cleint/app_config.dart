@@ -2,6 +2,7 @@ import '../global/constants/enum.dart';
 
 enum AppConfig {
   base,
+  todayCurriculumList,
 }
 
 extension AppUrlExtention on AppConfig {
@@ -12,10 +13,10 @@ extension AppUrlExtention on AppConfig {
         _baseUrl = "";
         break;
       case UrlLink.isDev:
-        _baseUrl = "";
+        _baseUrl = "https://api.npoint.io/";
         break;
       case UrlLink.isLocalServer:
-        _baseUrl = "";
+        _baseUrl = "https://api.npoint.io/";
         break;
     }
   }
@@ -23,7 +24,8 @@ extension AppUrlExtention on AppConfig {
     switch (this) {
       case AppConfig.base:
         return _baseUrl;
-  
+      case AppConfig.todayCurriculumList:
+        return 'bc69ae1f6991da81ab9a';
       default:
     }
     return "";

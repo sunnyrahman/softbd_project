@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'data/controller/today_curriculum_controller/curriculum_controller.dart';
 import 'data/storage_controller.dart';
 import 'data/theme_controller.dart';
 import 'http_cleint/request_handler.dart';
@@ -23,6 +24,9 @@ Future init(SharedPreferences prefs) async {
   Get.put(StorageController(prefs: prefs));
   Get.put(ThemeController(prefs: prefs));
   ///
+  Get.put(TodayCurriculumController(prefs: prefs));
+
+
 
   // Get.lazyPut(() => ThemeController(prefs: prefs));
   // Get.lazyPut(() => StorageController(prefs: prefs));

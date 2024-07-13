@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'getit_locator.dart';
 import 'global/constants/enum.dart';
@@ -9,6 +10,7 @@ import 'view/screen/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('bn', null);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   AppUrlExtention.setUrl(UrlLink.isDev);
   await init(prefs);
