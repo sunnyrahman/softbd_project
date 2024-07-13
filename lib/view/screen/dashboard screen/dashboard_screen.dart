@@ -68,8 +68,7 @@ class _DashBordScreenState extends State<DashBordScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(Images.home, height: 25, color: currentTab == 0 ? const Color(0xff202020) : const Color(0xff202020),),
-                            //Icon(Icons.home, size: 25, color: currentTab == 0 ? Color(0xff202020) : Color(0xff202020),),
+                            Image.asset( currentTab==0 ? Images.home : Images.homeWhite, height: 25, color: currentTab == 0 ? const Color(0xff202020) : const Color(0xff202020),),
                             SizedBox(
                               height: 15,
                                 // color: Colors.purple,
@@ -91,7 +90,7 @@ class _DashBordScreenState extends State<DashBordScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(Images.date, height: 25, color: currentTab == 1 ? const Color(0xff202020) : const Color(0xff202020),),
+                            Image.asset( currentTab==1 ? Images.calendarBlack :  Images.date, height: 25, color: currentTab == 1 ? const Color(0xff202020) : const Color(0xff202020),),
                             SizedBox(
                                 height: 15,
                                 child: Text("•", textAlign: TextAlign.start, style: TextStyle( fontSize: 20, color: currentTab == 1 ? const Color(0xff508752) : Colors.transparent),)),

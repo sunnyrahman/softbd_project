@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../global/constants/images.dart';
+import '../../../../global/utils/show_toast.dart';
 import '../../../global/widget/global_sizedbox.dart';
+import '../../base_widget/custom_popup_dialog.dart';
 import '../../base_widget/custom_text_field.dart';
 import '../../base_widget/global_button.dart';
 
@@ -124,12 +127,40 @@ class _Screen3State extends State<Screen3> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35,),
             child: GlobalButtonWidget(
-              buttomColor: const Color(0xff336F4A),
+                buttomColor: const Color(0xff336F4A),
                 str: 'সংরক্ষন করুন',
                 height: 45,
                 radius: 12,
-                onTap: () {
-
+                onTap: () async{
+                  if(nameCtr.text.isNotEmpty){
+                    if(subCtr.text.isNotEmpty){
+                      if(dateCtr.text.isNotEmpty){
+                        if(locationCtr.text.isNotEmpty){
+                          if(descriptionCtr.text.isNotEmpty){
+                            Get.dialog(CustomAlertDialogForPermission(
+                              title: 'নতুন অনুচ্ছেদ সংরক্ষন',
+                              description: 'আপনার সময়রেখাতে নতুন অনুচ্ছেদ সংরক্ষণ সম্পুর্ন হয়েছে',
+                              buttonTap: () {
+                                // Navigator.pop(context);
+                                Get.offAll(const Screen3());
+                              },
+                              buttonText: "আরও যোগ করুন",
+                            ));
+                          } else{
+                            showCustomSnackBar("কার্যক্রমের বিবরণ লিখুন");
+                          }
+                        } else{
+                          showCustomSnackBar("স্থান নির্বাচন করুন");
+                        }
+                      } else{
+                        showCustomSnackBar("তারিখ ও সময় নির্বাচন করুন");
+                      }
+                    } else{
+                      showCustomSnackBar("অনুচ্ছেদের বিভাগ নির্বাচন করুন");
+                    }
+                  } else{
+                    showCustomSnackBar("অনুচ্ছেদ লিখুন");
+                  }
                 }
             ),
           ),
