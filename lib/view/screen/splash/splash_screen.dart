@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../global/constants/images.dart';
 import '../../../global/widget/global_image_loader.dart';
 import '../../../global/widget/global_sizedbox.dart';
-import '../softBD_screen/dashboard screen/dashboard_screen.dart';
+import '../dashboard screen/dashboard_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   void route() {
     Timer(const Duration(seconds: 3), () {
-      Get.offAll(() =>  const DashBardScreen());
+      Get.offAll(() =>  const DashBordScreen());
     });
   }
   @override
